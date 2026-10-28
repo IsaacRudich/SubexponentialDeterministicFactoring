@@ -1,0 +1,26 @@
+# Deterministic factoring in time N^{o(1)}.  Imports Mathlib only.
+#
+#   Challenge          -- the statement, for audit (imports Mathlib only).
+#   Solution           -- the same declarations, proved (imports Factoring_aux).
+#   Factoring_aux      -- imports every FactoringAux file.
+#   FactoringAux/*     -- every lemma and proof.
+name = "SubexponentialDeterministicFactoring"
+defaultTargets = ["Challenge", "Solution"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.35.0"
+
+[[lean_lib]]
+name = "Challenge"
+
+[[lean_lib]]
+name = "Solution"
+
+[[lean_lib]]
+name = "Factoring_aux"
+
+[[lean_lib]]
+name = "FactoringAux"
+globs = ["FactoringAux.+"]
