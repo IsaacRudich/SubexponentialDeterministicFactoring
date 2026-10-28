@@ -10,8 +10,8 @@ public import Mathlib.Data.Nat.Log
 This file is the statement for audit.  It imports Mathlib only.
 
 * **Factoring** is `Nat.minFac`: the smallest prime factor of `N` (it is `1` for `N = 1`).
-* **Machines, encodings and time** are Mathlib's: a `Turing.TM2ComputableInTime` machine (a finite
-  multi-stack Turing machine, `Turing.FinTM2`, with a time bound), with numbers written in binary by
+* **Machines, encodings and time** are Mathlib's: a `Turing.TM2ComputableInTime` machine (a Turing
+  machine in Mathlib's `TM2` model, `Turing.FinTM2`, with a time bound), with numbers written in binary by
   `Computability.encodeNat` on input and output.  `n` is the length of the input, which is the
   number of bits of `N`, so `2 ^ n` is about `N`.  Mathlib asks only the input stack's alphabet to
   be finite; `FactoringMachine.FiniteAlphabets` asks it of every stack, as for a textbook machine.

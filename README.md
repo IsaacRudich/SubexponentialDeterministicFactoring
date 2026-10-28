@@ -28,7 +28,7 @@ The definitions it uses, all in `Challenge.lean`:
 - `factor := Nat.minFac`: the smallest prime factor of `N` (Mathlib's conventions: `Nat.minFac 1 = 1`,
   `Nat.minFac 0 = 2`).
 - `FactoringMachine := Turing.TM2ComputableInTime encodeNat encodeNat factor`: a Mathlib machine
-  (`Turing.FinTM2`, a multi-stack Turing machine with finite control) that computes `factor`, with
+  (`Turing.FinTM2`, a Turing machine in Mathlib's `TM2` model) that computes `factor`, with
   input and output written in binary by `Computability.encodeNat`, together with a time function of
   the input length and a proof that on every input the machine halts with the right output within
   that time.
@@ -140,7 +140,7 @@ The build above was limited to two threads (`LEAN_NUM_THREADS=2`); by default Le
   repetition (at most `log₂ N` calls, each on an input of at most `n` bits), but that step is not
   formalized here.
 - *The machine model* is Mathlib's `TM2` (`Turing.FinTM2` with `Turing.TM2ComputableInTime`): a
-  multi-stack Turing machine with finite control, numbers in binary on input and output. Time is the
+  Turing machine with finite control, numbers in binary on input and output. Time is the
   number of machine steps, as a function of the input length.
 - The constants `C_k` exist but are not computed; they are astronomically large.
 - `SqrtLogLogConjecture` is a conjecture: stated, not proved.
