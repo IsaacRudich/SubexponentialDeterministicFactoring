@@ -69,7 +69,7 @@ Solution proves exactly the Challenge's statement, using only the axioms `propex
 | `Solution.lean` | The same declarations, proved. Imports `Factoring_aux`. |
 | `FactoringAux/Definitions.lean` | A verbatim copy of the Challenge's definitions, on which the proof builds (the proof cannot import `Challenge.lean`, which also states the theorem). Comparator checks that the two copies agree. |
 | `Factoring_aux.lean` | Imports every file of `FactoringAux/`. |
-| `FactoringAux/` | Every lemma and proof: 144 files, about 36,000 lines. Besides the main lemma it proves weaker per-`k` results on the way (`Aux.trialDivisionRate`, `Aux.everyRootRate`). |
+| `FactoringAux/` | Every lemma and proof: 143 files, about 36,000 lines. Besides the main lemma it also proves weaker results (`Aux.trialDivisionRate`; `Aux.everyRootRate`, a machine for each `k`). |
 | `FactoringAux/Copied/` | Files adapted from the authors' related work (a register machine, a structured source language with a verified compiler to it, and arithmetic routines), about 5,000 lines. |
 | `comparator.json`, `formalization.yaml` | The Comparator configuration and the project metadata. |
 
@@ -124,7 +124,15 @@ lake build                # builds Challenge, Solution and every file of the pro
 and, for `Challenge.lean`, the expected warning ``declaration uses `sorry` `` (the Challenge leaves the
 proof open on purpose). To print the axioms again: `lake env lean Solution.lean`.
 
-TIMING_PLACEHOLDER
+Measured times, from a fresh clone (Apple machine with 12 cores, `LEAN_NUM_THREADS=2`, elan's Lean
+toolchain already installed, empty Mathlib cache directory):
+
+| Step | Wall-clock time |
+| --- | --- |
+| `lake exe cache get` (clone Mathlib and its dependencies, build the cache tool, download and unpack Mathlib's 9,031 compiled files) | 72 s |
+| `lake build` (the 146 files of this repository; Mathlib is not rebuilt) | 220 s |
+
+The build above was limited to two threads (`LEAN_NUM_THREADS=2`); by default Lean uses all cores.
 
 ## Limitations
 
